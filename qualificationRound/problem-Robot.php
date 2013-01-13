@@ -1,5 +1,8 @@
 <?php
 
+// 問題
+//
+
 $fp = fopen('Robot-small.in', 'r');
 $answer = fopen('Robot-answer.txt', 'w');
 $loopLimit = trim(fgets($fp));
@@ -8,11 +11,10 @@ $loopCounter = 1;
 while($loopLimit >= $loopCounter){
 
 	$case = trim(fgets($fp), "\n");
-	$orderNum = (int)trim(substr($case, 0, 2));
 	$orderList = array();
 
-	$orderData= explode(' ', substr($case, 2));
-
+	$orderData = explode(' ', $case);
+	array_shift($orderData);	// 最初の命令回数は必要ないので削除
 	$turnList = array();			// ボタンを押すロボットの順番を格納
 	$orangePosList = array();	// オレンジが押すボタンの位置のリスト
 	$bluePosList = array();						// ブルーが押すボタンの位置のリスト
@@ -56,10 +58,11 @@ while($loopLimit >= $loopCounter){
 			}
 		}
 
+	//	echo implode(' ', $turnList) . "\n";
 		$time++;
 	}
 
-	echo $time . "\n";
+	echo "Case #" . $loopCounter . ": " . $time . "\n";
 
 	$loopCounter++;
 }
