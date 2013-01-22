@@ -33,42 +33,55 @@ class Snapper{
 
 }
 
-$n = 4;
-$k = 47;
-
-$snappers = array();
-
-for($i=0; $i<$n; $i++){
-	$snappers[] = new Snapper;
-}
-
-$snappers[0]->powerStatus = true;
-
-for($i=1; $i<=$k; $i++){
-
-	for($j=0; $j<$n; $j++){
-		if($snappers[$j]->powerStatus == true){
-			$snappers[$j]->toggleStatus();
+$fp = fopen('A-small.in', 'r');
+$answer = fopen('result.txt', 'w');
+$limit = trim(fgets($fp));
+$counter = 1;
+while($limit >= $counter){
+	$case = explode(' ', fgets($fp));
+	
+	$n = (int)$case[0];
+	$k = (int)$case[1];
+	
+	$snappers = array();
+	
+	for($i=0; $i<$n; $i++){
+		$snappers[] = new Snapper;
+	}
+	
+	$snappers[0]->powerStatus = true;
+	
+	for($i=1; $i<=$k; $i++){
+	
+		for($j=0; $j<$n; $j++){
+			if($snappers[$j]->powerStatus == true){
+				$snappers[$j]->toggleStatus();
+			}
 		}
-	}
-
-	for($j=1; $j<$n; $j++){
-		if($snappers[$j-1]->powerStatus == true && $snappers[$j-1]->status == true){
-			$snappers[$j]->powerStatus = true;
-		}else{
-			$snappers[$j]->powerStatus = false;
+	
+		for($j=1; $j<$n; $j++){
+			if($snappers[$j-1]->powerStatus == true && $snappers[$j-1]->status == true){
+				$snappers[$j]->powerStatus = true;
+			}else{
+				$snappers[$j]->powerStatus = false;
+			}
 		}
+
+/*
+		echo $i . ' : ';
+		for($j=0; $j<$n; $j++){
+			echo $snappers[$j]->printStatus();
+		}
+*/	
+
 	}
 
-	echo $i . ' : ';
-	for($j=0; $j<$n; $j++){
-		echo $snappers[$j]->printStatus();
-	}
+	$result = "Case #{$counter}: ";
+	$result .= ($snappers[$n-1]->powerStatus == true && $snappers[$n-1]->status == true) ? "ON\n" : "OFF\n";
+	fwrite($answer, $result);
 
-	if($snappers[$n-1]->powerStatus == true && $snappers[$n-1]->status == true){
-		echo "◉\n";
-	}else{
-		echo "◯\n";
-	}
+	$counter++;
 
 }
+fclose($fp);
+fclose($answer);
