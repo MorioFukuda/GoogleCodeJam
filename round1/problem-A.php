@@ -3,8 +3,8 @@
 // Google Code Jam Japan 2011 予選問題A
 // http://code.google.com/codejam/contest/889487/dashboard
 
-$fp = fopen('A-large.in', 'r');
-$answer = fopen('A-answer.txt', 'w');
+$fp = fopen('A-small.in', 'r');
+$answer = fopen('A-small-answer.txt', 'w');
 $loopLimit = trim(fgets($fp));
 $loopCounter = 1;
 //$loopLimit = 1;
