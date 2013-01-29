@@ -1,4 +1,7 @@
 <?php
+
+// Google Code Jam 2011 練習問題A
+// http://code.google.com/codejam/contest/1343486/dashboard#s=p0
 	
 class Snapper{
 
@@ -32,9 +35,9 @@ class Snapper{
 	}
 
 }
-
-$fp = fopen('A-small.in', 'r');
-$answer = fopen('result.txt', 'w');
+echo "start\n";
+$fp = fopen('A-large.in', 'r');
+$answer = fopen('A-result.txt', 'w');
 $limit = trim(fgets($fp));
 $counter = 1;
 while($limit >= $counter){
@@ -78,6 +81,7 @@ while($limit >= $counter){
 
 	$result = "Case #{$counter}: ";
 	$result .= ($snappers[$n-1]->powerStatus == true && $snappers[$n-1]->status == true) ? "ON\n" : "OFF\n";
+	echo $result;
 	fwrite($answer, $result);
 
 	$counter++;

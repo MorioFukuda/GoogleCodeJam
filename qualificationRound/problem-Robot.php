@@ -1,9 +1,9 @@
 <?php
 
-// 問題
-//
+// Google Code Jam 2011 Problem A
+// http://code.google.com/codejam/contest/975485/dashboard#s=p0
 
-$fp = fopen('Robot-small.in', 'r');
+$fp = fopen('Robot-large.in', 'r');
 $answer = fopen('Robot-answer.txt', 'w');
 $loopLimit = trim(fgets($fp));
 $loopCounter = 1;
@@ -62,7 +62,9 @@ while($loopLimit >= $loopCounter){
 		$time++;
 	}
 
-	echo "Case #" . $loopCounter . ": " . $time . "\n";
+	$result =  "Case #" . $loopCounter . ": " . $time . "\n";
+	echo $result;
+	fwrite($answer, $result);
 
 	$loopCounter++;
 }

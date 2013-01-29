@@ -1,6 +1,9 @@
 <?php
 
-$fp = fopen('A-small.in', 'r');
+// Google Code Jam Japan 2011 予選問題A
+// http://code.google.com/codejam/contest/889487/dashboard
+
+$fp = fopen('A-large.in', 'r');
 $answer = fopen('A-answer.txt', 'w');
 $loopLimit = trim(fgets($fp));
 $loopCounter = 1;
@@ -32,6 +35,8 @@ while($loopLimit >= $loopCounter){
 		}
 	}
 
-	echo "Case #" . $loopCounter . ": " . $cards[$v-1] . "\n";
+	$result = "Case #" . $loopCounter . ": " . $cards[$v-1] . "\n";
+	echo $result;
+	fwrite($answer, $result);
 	$loopCounter++;
 }
