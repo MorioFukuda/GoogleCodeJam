@@ -36,7 +36,7 @@ class Snapper{
 
 }
 echo "start\n";
-$fp = fopen('A-large.in', 'r');
+$fp = fopen('A-small.in', 'r');
 $answer = fopen('A-result.txt', 'w');
 $limit = trim(fgets($fp));
 $counter = 1;
@@ -70,12 +70,12 @@ while($limit >= $counter){
 			}
 		}
 
-/*
+
 		echo $i . ' : ';
 		for($j=0; $j<$n; $j++){
 			echo $snappers[$j]->printStatus();
 		}
-*/	
+	
 
 	}
 
